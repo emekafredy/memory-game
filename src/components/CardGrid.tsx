@@ -17,13 +17,15 @@ export const CardGrid: FC<ICardGrid> = ({
 }) => {
   useFetchStats();
   const { stats } = useSelector(getStatsState);
-  const { gridData, moves, isSelected, setSelectedItem } = useGamePlay({
-    step,
-    setStep,
-    theme,
-    gridSize,
-    playSound,
-  });
+  const { gridData, moves, isSelected, setSelectedItem, loading } = useGamePlay(
+    {
+      step,
+      setStep,
+      theme,
+      gridSize,
+      playSound,
+    }
+  );
 
   const getGridCols = () => {
     return gridSize === "4" ? "grid-cols-4" : "grid-cols-6";
@@ -44,6 +46,7 @@ export const CardGrid: FC<ICardGrid> = ({
                 data={String(data)}
                 setSelectedItem={setSelectedItem}
                 isSelected={isSelected}
+                loading={loading}
               />
             );
           })}

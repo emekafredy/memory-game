@@ -8,32 +8,42 @@ export const Card: FC<ICard> = ({
   data,
   setSelectedItem,
   isSelected,
+  loading,
 }) => {
   return (
     <>
       {theme === "numbers" ? (
-        <div
+        <button
           id={index}
           data-value={data}
-          className="text-md sm:text-lg bg-white-200 h-24 p-2 md:p-8 font-bold flex justify-center items-center text-orange-200 cursor-pointer rounded-md"
+          className={`text-md sm:text-lg ${
+            isSelected(data, index)
+              ? "bg-white-200 text-orange-100"
+              : "bg-gray-100 text-white-500 "
+          } h-24 p-2 md:p-8 font-bold flex
+            justify-center items-center cursor-pointer rounded-md transition-all duration-500 rotate-btn`}
           onClick={(e) => setSelectedItem(e)}
+          disabled={loading}
         >
           {isSelected(data, index) ? data : "?"}
-        </div>
+        </button>
       ) : (
-        <div
+        <button
           id={index}
           data-value={data}
-          className="bg-white-100 p-2 sm:p-4 cursor-pointer rounded-md flex justify-center items-center
-                  transition-all duration-500"
+          className={`${
+            isSelected(data, index) ? "bg-white-200" : "bg-gray-100"
+          } p-2 sm:p-4 cursor-pointer rounded-md flex justify-center items-center
+                  transition-all duration-500 rotate-btn`}
           onClick={(e) => setSelectedItem(e)}
+          disabled={loading}
         >
           {isSelected(data, index) ? (
             <img src={data} alt={data} />
           ) : (
             <img src={HelpIcon} alt="hidden-object-icon" />
           )}
-        </div>
+        </button>
       )}
     </>
   );

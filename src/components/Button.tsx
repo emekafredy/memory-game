@@ -32,7 +32,7 @@ export const Button: FC<IButtonProps> = ({
       "bg-purple-100 text-white-100 opacity-[0.85]": selected,
       "bg-purple-100 text-white-100 opacity-[0.85] hover:bg-purple-200":
         primary,
-      "bg-silver-300 text-purple-100 hover:bg-silver-100": secondary,
+      "bg-silver-200 text-purple-100 hover:bg-silver-100": secondary,
       "bg-transparent text-purple-100 hover:text-purple-200": transparent,
       "bg-green-100 text-white-100 hover:bg-green-200": success,
     }
