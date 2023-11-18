@@ -10,11 +10,9 @@ const initialState: StatsProps = {
   stats: {
     previousScore: {
       moves: 0,
-      time: 0,
     },
     bestScore: {
       moves: 0,
-      time: 0,
     },
   },
 };
