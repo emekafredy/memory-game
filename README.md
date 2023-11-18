@@ -5,8 +5,8 @@
 
 ### Screenshot"
 
--
+- ![mem-game](https://github.com/emekafredy/memory-game/assets/29521319/55a9aa40-0db9-4cdc-9c1a-1f3f6bc90021)
 
 ### Demo Url
 
--
+- [Link](https://memory-game-khaki-chi.vercel.app/)
