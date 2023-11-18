@@ -15,6 +15,7 @@ export const useGamePlay = ({
   playSound,
 }: ICardGrid) => {
   const emptyItemsState = { item: "", id: "" };
+  const [loading, setLoading] = useState<boolean>(false);
   const [gridData, setGridData] = useState<any[]>([]);
   const [score, setScore] = useState<number>(0);
   const [moves, setMoves] = useState<number>(0);
@@ -24,10 +25,10 @@ export const useGamePlay = ({
   const [firstItem, setFirstItem] = useState<IItem>(emptyItemsState);
   const [secondItem, setSecondItem] = useState<IItem>(emptyItemsState);
 
-  const selectCardAudio = new Audio(ClickSound);
-  const correctPairAudio = new Audio(CorrectSound);
-  const wrongPairAudio = new Audio(WrongSound);
-  const gameWonAudio = new Audio(WinSound);
+  const [selectCardAudio] = useState(new Audio(ClickSound));
+  const [correctPairAudio] = useState(new Audio(CorrectSound));
+  const [wrongPairAudio] = useState(new Audio(WrongSound));
+  const [gameWonAudio] = useState(new Audio(WinSound));
 
   const isSelected = (item: string, id: string) => {
     return (
@@ -73,13 +74,14 @@ export const useGamePlay = ({
   useEffect(() => {
     const handleCardsSelect = async () => {
       if (firstItem.item !== "" && secondItem.item !== "") {
+        await setLoading(true);
         if (firstItem.item === secondItem.item) {
-          if (playSound) correctPairAudio.play();
+          if (playSound) await correctPairAudio.play();
           await setScore(score + 5);
           await setItemsWon([...itemsWon, firstItem.item]);
           await setPairsWon(pairsWon + 1);
         } else {
-          if (playSound) wrongPairAudio.play();
+          if (playSound) await wrongPairAudio.play();
         }
 
         await setMoves(moves + 1);
@@ -87,6 +89,7 @@ export const useGamePlay = ({
           setFirstItem({ item: "", id: "" });
           setSecondItem({ item: "", id: "" });
         }, 1000);
+        setLoading(false);
       }
     };
 
@@ -104,5 +107,6 @@ export const useGamePlay = ({
     moves,
     isSelected,
     setSelectedItem,
+    loading,
   };
 };

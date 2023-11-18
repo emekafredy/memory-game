@@ -33,4 +33,5 @@ export interface ICard {
   data: string;
   setSelectedItem: (e: any) => void;
   isSelected: (data: string, index: string) => boolean;
+  loading: boolean;
 }

@@ -6,3 +6,7 @@
 body {
   background-color: #2b2c37;
 }
+
+.rotate-btn:active {
+  transform: rotateY(180deg);
+}
