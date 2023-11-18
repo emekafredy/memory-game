@@ -8,7 +8,7 @@ export const NavBar = () => {
     >
       <nav
         className="w-[90%] lg:w-[1000px] xl:w-[1200px]
-          m-auto flex flex-col justify-center items-center"
+          m-auto flex flex-col justify-between"
       >
         <span className="text-md md:text-lg text-white-100 tracking-widest opacity-75 font-bold">
           Memory Game
